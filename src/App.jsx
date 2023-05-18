@@ -1,12 +1,16 @@
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
+// import "./App.css";
+import Home from "./pages/Home/Home";
+import Tweets from "./pages/Tweets/Tweets";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <button type="button">Button</button>
-      <input type="email" name="email" />
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/tweets" element={<Tweets />} />
+      </Route>
+    </Routes>
   );
-}
-
-export default App;
+};
