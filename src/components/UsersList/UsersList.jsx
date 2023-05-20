@@ -3,52 +3,42 @@ import { useEffect, useState } from "react";
 import { getUsers } from "../../api/Api";
 import { ButtonLoadMore } from "../ButtonLoadMore/ButtonLoadMore";
 import UserListItem from "../UserListItem/UserListItem";
+import { Loader } from "../Loader/Loader";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
 
   useEffect(() => {
-    if (page === 1) {
-      async function getAllUsers() {
-        try {
-          const response = await getUsers(page);
-          console.log(response);
+    async function getAllUsers() {
+      try {
+        setIsLoading(true);
+        setShowLoadMoreBtn(false);
+        const response = await getUsers(page);
+        setShowLoadMoreBtn(true);
+        console.log(response);
+        if (page === 1) {
           setUsers(response);
-        } catch (error) {
-          console.log(error);
+          setIsLoading(false);
+        } else {
+          setUsers((prev) => [...prev, ...response]);
+          setIsLoading(false);
         }
-      }
-      getAllUsers();
-    }
-  }, [page]);
-
-  useEffect(() => {
-    if (page !== 1) {
-      async function getAllUsers() {
-        try {
-          const response = await getUsers(page);
-          if (response && response.length > 0) {
-            console.log(response);
-            setUsers((prev) => [...prev, ...response]);
-          }
-        } catch (error) {
-          console.log(error);
+        if (response.length === 0) {
+          setShowLoadMoreBtn(false);
         }
+      } catch (error) {
+        console.log(error);
       }
-      getAllUsers();
     }
+    getAllUsers();
   }, [page]);
 
   const loadMoreCards = () => {
     setPage((prev) => prev + 1);
-    // setIsLoading(true);
-  };
-
-  const onButtonVisible = () => {
-    if (users && users.length < Number(page * 3)) {
-      return false;
-    } else return true;
+    setIsLoading(true);
   };
 
   return (
@@ -60,7 +50,8 @@ const UsersList = () => {
           </UserCard>
         ))}
       </UserList>
-      {onButtonVisible() && <ButtonLoadMore onClickButton={loadMoreCards} />}
+      {showLoadMoreBtn && <ButtonLoadMore onClickButton={loadMoreCards} />}
+      {isLoading && <Loader />}
     </section>
   );
 };
