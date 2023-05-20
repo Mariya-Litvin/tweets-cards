@@ -1,5 +1,11 @@
+import UsersList from "../../components/UsersList/UsersList";
+
 const Tweets = () => {
-  return <h1>Tweets</h1>;
+  return (
+    <main>
+      <UsersList />
+    </main>
+  );
 };
 
 export default Tweets;
