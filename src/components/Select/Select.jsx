@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const Select = ({ handleChange }) => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -42,3 +43,7 @@ const Select = ({ handleChange }) => {
 };
 
 export default Select;
+
+Select.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};

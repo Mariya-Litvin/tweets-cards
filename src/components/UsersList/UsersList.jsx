@@ -57,7 +57,8 @@ const UsersList = () => {
           toast.success(`Tweets Cards are over`);
         }
       } catch (error) {
-        console.log(error);
+        toast.error("Sorry, something went wrong, please try again later");
+        setIsLoading(false);
       }
     }
     getAllUsers();
