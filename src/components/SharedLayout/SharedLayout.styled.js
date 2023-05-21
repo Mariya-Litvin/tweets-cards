@@ -15,7 +15,7 @@ export const Header = styled.header`
     display: flex;
     gap: 20px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 768px) {
     width: 100%;
   }
 `;

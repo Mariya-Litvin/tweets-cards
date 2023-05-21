@@ -3,14 +3,18 @@ import styled from "styled-components";
 export const HomeImg = styled.img`
   margin-top: 20px;
   margin-bottom: 10px;
-  width: 500px;
-  height: 300px;
+  width: 350px;
+  height: 200px;
+  @media screen and (min-width: 768px) {
+    width: 500px;
+    height: 300px;
+  }
 `;
 
 export const Section = styled.section`
-  width: 1280px;
+  width: 480px;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding: 0px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,9 +26,9 @@ export const HomeText = styled.p`
   gap: 5px;
   flex-direction: column;
   margin: 0 auto;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+
   text-align: center;
   color: #423189;
   font-size: 36px;
