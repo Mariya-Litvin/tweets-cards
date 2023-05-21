@@ -1,3 +1,7 @@
+import logo from "../../images/logo.png";
+import logoGoIt from "../../images/goit.png";
+import { useState } from "react";
+import { updateUsersData } from "../../api/Api";
 import {
   ButtonFollow,
   LogoGoIt,
@@ -7,11 +11,7 @@ import {
   UserLine,
   UserTweets,
   WrapperUserAvatar,
-} from "../UsersList/UsersList.styled";
-import logo from "../../images/logo.png";
-import logoGoIt from "../../images/goit.png";
-import { useState } from "react";
-import { updateUsersData } from "../../api/Api";
+} from "./UserListItem.styled";
 
 const UserListItem = (user) => {
   const { id, avatar, tweets, followers, check } = user.user;
@@ -53,7 +53,7 @@ const UserListItem = (user) => {
       </UserFollowers>
       <ButtonFollow
         type="button"
-        style={{ background: selection ? "#5CD3A8" : "#EBD8FF" }}
+        style={{ backgroundColor: selection ? "#5CD3A8" : "#EBD8FF" }}
         onClick={() => handleFollowClick(id)}
       >
         {selection ? "following" : "follow"}

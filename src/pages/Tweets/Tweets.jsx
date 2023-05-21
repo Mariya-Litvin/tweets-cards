@@ -1,18 +1,19 @@
 import UsersList from "../../components/UsersList/UsersList";
-import { ButtonBack } from "./Tweets.styled";
+import { ButtonBack, Section } from "./Tweets.styled";
 import { HiArrowSmLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+
 const Tweets = () => {
   const navigate = useNavigate();
   return (
     <main>
-      <section>
+      <Section>
         <ButtonBack onClick={() => navigate("/")}>
           <HiArrowSmLeft size="20" />
           Go back
         </ButtonBack>
         <UsersList />
-      </section>
+      </Section>
     </main>
   );
 };

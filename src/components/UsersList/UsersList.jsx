@@ -4,6 +4,8 @@ import { getUsers } from "../../api/Api";
 import { ButtonLoadMore } from "../ButtonLoadMore/ButtonLoadMore";
 import UserListItem from "../UserListItem/UserListItem";
 import { Loader } from "../Loader/Loader";
+import ScrollToTop from "react-scroll-up";
+import { TfiArrowCircleUp } from "react-icons/tfi";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -26,7 +28,7 @@ const UsersList = () => {
           setUsers((prev) => [...prev, ...response]);
           setIsLoading(false);
         }
-        if (response.length === 0) {
+        if (response.length < 3) {
           setShowLoadMoreBtn(false);
         }
       } catch (error) {
@@ -42,7 +44,7 @@ const UsersList = () => {
   };
 
   return (
-    <section>
+    <>
       <UserList>
         {users.map((user) => (
           <UserCard key={user.id}>
@@ -52,7 +54,24 @@ const UsersList = () => {
       </UserList>
       {showLoadMoreBtn && <ButtonLoadMore onClickButton={loadMoreCards} />}
       {isLoading && <Loader />}
-    </section>
+      <ScrollToTop
+        showUnder={160}
+        style={{
+          position: "fixed",
+          color: "#D318FF",
+          bottom: 50,
+          right: 30,
+          cursor: "pointer",
+          transitionDuration: "0.2s",
+          transitionTimingFunction: "linear",
+          transitionDelay: "0s",
+        }}
+      >
+        <span>
+          <TfiArrowCircleUp size="50" />
+        </span>
+      </ScrollToTop>
+    </>
   );
 };
 
