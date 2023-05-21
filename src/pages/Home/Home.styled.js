@@ -33,5 +33,5 @@ export const HomeText = styled.p`
   color: #423189;
   font-size: 36px;
   font-weight: 700;
-  width: 650px;
+  width: 500px;
 `;
