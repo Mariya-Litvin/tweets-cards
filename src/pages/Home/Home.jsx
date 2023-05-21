@@ -5,7 +5,7 @@ const Home = () => {
     <main>
       <Section>
         <HomeImg src={logo} alt="logo" />
-        <HomeText>Welcome to Tweets App!</HomeText>
+        <HomeText>Welcome to the Tweets Cards App!</HomeText>
       </Section>
     </main>
   );

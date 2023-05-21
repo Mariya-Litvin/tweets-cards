@@ -8,6 +8,10 @@ export const Section = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
 `;
 
 export const HomeImg = styled.img`
@@ -23,18 +27,18 @@ export const HomeImg = styled.img`
 
 export const HomeText = styled.p`
   display: flex;
-  gap: 5px;
+  gap: 10px;
   flex-direction: column;
   margin: 0 auto;
-  align-items: flex-start;
-  justify-content: center;
 
   text-align: center;
   color: #423189;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 700;
-  width: 300px;
+  width: 250px;
   @media screen and (min-width: 768px) {
     width: 700px;
+    font-size: 36px;
+    font-weight: 700;
   }
 `;

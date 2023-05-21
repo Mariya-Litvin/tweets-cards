@@ -6,6 +6,7 @@ import UserListItem from "../UserListItem/UserListItem";
 import { Loader } from "../Loader/Loader";
 import ScrollToTop from "react-scroll-up";
 import { TfiArrowCircleUp } from "react-icons/tfi";
+import toast from "react-hot-toast";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -30,6 +31,7 @@ const UsersList = () => {
         }
         if (response.length < 3) {
           setShowLoadMoreBtn(false);
+          toast.success(`Tweets Cards are over`);
         }
       } catch (error) {
         console.log(error);
