@@ -27,12 +27,10 @@ const UsersList = () => {
   const handleChange = (value) => {
     if (value === "Follow") {
       const findUsers = users.filter((user) => user.check === false);
-      console.log(findUsers);
       setUsers(findUsers);
     }
     if (value === "Followings") {
       const findUsers = users.filter((user) => user.check === true);
-      console.log(findUsers);
       setUsers(findUsers);
     }
   };
