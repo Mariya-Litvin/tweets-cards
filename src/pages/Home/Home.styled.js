@@ -33,5 +33,8 @@ export const HomeText = styled.p`
   color: #423189;
   font-size: 36px;
   font-weight: 700;
-  width: 500px;
+  width: 300px;
+  @media screen and (min-width: 768px) {
+    width: 700px;
+  }
 `;
