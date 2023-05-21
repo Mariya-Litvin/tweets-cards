@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Select = () => {
+const Select = ({ handleChange }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const options = [
@@ -9,16 +9,17 @@ const Select = () => {
     { value: "Followings", label: "Followings" },
   ];
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-    //   if (selectedValue==="follow")
+  const handleChangeSelect = (event) => {
+    const value = event.target.value;
+    setSelectedValue(value);
+    handleChange(value);
   };
 
   return (
     <div>
       <select
         value={selectedValue}
-        onChange={handleChange}
+        onChange={handleChangeSelect}
         style={{
           backgroundColor: "#3b83bd",
           color: "#fff",

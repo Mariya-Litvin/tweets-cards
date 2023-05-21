@@ -7,12 +7,26 @@ import { Loader } from "../Loader/Loader";
 import ScrollToTop from "react-scroll-up";
 import { TfiArrowCircleUp } from "react-icons/tfi";
 import toast from "react-hot-toast";
+import Select from "../Select/Select";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
+
+  const handleChange = (value) => {
+    if (value === "Follow") {
+      const findUsers = users.filter((user) => user.check === false);
+      console.log(findUsers);
+      setUsers(findUsers);
+    }
+    if (value === "Followings") {
+      const findUsers = users.filter((user) => user.check === true);
+      console.log(findUsers);
+      setUsers(findUsers);
+    }
+  };
 
   useEffect(() => {
     async function getAllUsers() {
@@ -47,6 +61,7 @@ const UsersList = () => {
 
   return (
     <>
+      <Select handleChange={handleChange} />
       <UserList>
         {users.map((user) => (
           <UserCard key={user.id}>
