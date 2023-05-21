@@ -15,11 +15,11 @@ Create your personal backend for development using the mockapi.io UI service. Cr
 
 ## The technology stack that was used
 
-React
-React-router-dom
-React-loader-spinner
-React-scroll-up
-React-icons
-React-hot-toast
-Axios
-Styled-components
+1. React
+2. React-router-dom
+3. React-loader-spinner
+4. React-scroll-up
+5. React-icons
+6. React-hot-toast
+7. Axios
+8. Styled-components

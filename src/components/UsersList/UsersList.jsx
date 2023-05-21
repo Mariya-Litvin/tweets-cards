@@ -21,7 +21,7 @@ const UsersList = () => {
         setShowLoadMoreBtn(false);
         const response = await getUsers(page);
         setShowLoadMoreBtn(true);
-        console.log(response);
+
         if (page === 1) {
           setUsers(response);
           setIsLoading(false);

@@ -12,6 +12,11 @@ export const Section = styled.section`
   }
 `;
 
+export const WrapperButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const ButtonBack = styled.div`
   font-family: "Segoe UI", sans-serif;
   display: flex;

@@ -1,18 +1,24 @@
 import UsersList from "../../components/UsersList/UsersList";
-import { ButtonBack, Section } from "./Tweets.styled";
+import { ButtonBack, Section, WrapperButtons } from "./Tweets.styled";
 import { HiArrowSmLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import Select from "../../components/Select/Select";
 
 const Tweets = () => {
   const navigate = useNavigate();
+
+  const handleTweets = () => {};
   return (
     <main>
       <Section>
-        <ButtonBack onClick={() => navigate("/")}>
-          <HiArrowSmLeft size="20" />
-          Go back
-        </ButtonBack>
-        <UsersList />
+        <WrapperButtons>
+          <ButtonBack onClick={() => navigate("/")}>
+            <HiArrowSmLeft size="20" />
+            Go back
+          </ButtonBack>
+          <Select />
+        </WrapperButtons>
+        <UsersList tweets={handleTweets} />
       </Section>
     </main>
   );

@@ -12,6 +12,7 @@ import {
   UserTweets,
   WrapperUserAvatar,
 } from "./UserListItem.styled";
+import PropTypes from "prop-types";
 
 const UserListItem = (user) => {
   const { id, avatar, tweets, followers, check } = user.user;
@@ -63,3 +64,13 @@ const UserListItem = (user) => {
 };
 
 export default UserListItem;
+
+UserListItem.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    check: PropTypes.bool.isRequired,
+  }).isRequired,
+};
