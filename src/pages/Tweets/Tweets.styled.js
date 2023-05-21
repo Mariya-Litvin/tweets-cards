@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const Section = styled.section`
   width: 480px;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding: 0px 15px;
   display: flex;
   flex-direction: column;
 
-  margin: 0 auto;
   @media screen and (min-width: 1280px) {
     width: 1280px;
   }

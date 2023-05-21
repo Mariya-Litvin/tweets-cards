@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Section = styled.section`
+  width: 480px;
+  margin: 0 auto;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const HomeImg = styled.img`
   margin-top: 20px;
   margin-bottom: 10px;
@@ -9,16 +19,6 @@ export const HomeImg = styled.img`
     width: 500px;
     height: 300px;
   }
-`;
-
-export const Section = styled.section`
-  width: 480px;
-  margin: 0 auto;
-  padding: 0px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const HomeText = styled.p`
