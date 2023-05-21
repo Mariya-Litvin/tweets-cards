@@ -1,4 +1,9 @@
-import { UserCard, UserList } from "./UsersList.styled";
+import {
+  ButtonBack,
+  UserCard,
+  UserList,
+  WrapperButtons,
+} from "./UsersList.styled";
 import { useEffect, useState } from "react";
 import { getUsers } from "../../api/Api";
 import { ButtonLoadMore } from "../ButtonLoadMore/ButtonLoadMore";
@@ -8,12 +13,16 @@ import ScrollToTop from "react-scroll-up";
 import { TfiArrowCircleUp } from "react-icons/tfi";
 import toast from "react-hot-toast";
 import Select from "../Select/Select";
+import { HiArrowSmLeft } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleChange = (value) => {
     if (value === "Follow") {
@@ -61,7 +70,13 @@ const UsersList = () => {
 
   return (
     <>
-      <Select handleChange={handleChange} />
+      <WrapperButtons>
+        <ButtonBack onClick={() => navigate("/")}>
+          <HiArrowSmLeft size="20" />
+          Go back
+        </ButtonBack>
+        <Select handleChange={handleChange} />
+      </WrapperButtons>
       <UserList>
         {users.map((user) => (
           <UserCard key={user.id}>
