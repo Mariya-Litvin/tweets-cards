@@ -5,7 +5,7 @@ import {
   WrapperButtons,
 } from "./UsersList.styled";
 import { useEffect, useState } from "react";
-import { getUsers } from "../../api/Api";
+import { getSelect, getUsers } from "../../api/Api";
 import { ButtonLoadMore } from "../ButtonLoadMore/ButtonLoadMore";
 import UserListItem from "../UserListItem/UserListItem";
 import { Loader } from "../Loader/Loader";
@@ -21,18 +21,24 @@ const UsersList = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
+  const [selectValue, setSelectValue] = useState("");
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    async function getAll() {
+      const response = await getSelect(selectValue);
+      console.log(response);
+      setUsers(response);
+      setShowLoadMoreBtn(false);
+    }
+    getAll();
+  }, [selectValue, showLoadMoreBtn]);
+
   const handleChange = (value) => {
-    if (value === "Follow") {
-      const findUsers = users.filter((user) => user.check === false);
-      setUsers(findUsers);
-    }
-    if (value === "Followings") {
-      const findUsers = users.filter((user) => user.check === true);
-      setUsers(findUsers);
-    }
+    const valueSelect = value;
+    setSelectValue(valueSelect);
+    console.log(valueSelect);
   };
 
   useEffect(() => {

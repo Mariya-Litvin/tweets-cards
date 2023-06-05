@@ -83,4 +83,10 @@ export const ButtonFollow = styled.button`
   border: none;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  :hover,
+  :focus {
+    box-shadow: 10px 10px 5px -1px rgba(87, 190, 230, 0.2);
+    scale: 1.02;
+  }
 `;

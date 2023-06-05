@@ -15,7 +15,7 @@ import {
 import PropTypes from "prop-types";
 
 const UserListItem = (user) => {
-  const { id, avatar, tweets, followers, check } = user.user;
+  const { user: name, id, avatar, tweets, followers, check } = user.user;
 
   const [selection, setSelection] = useState(check);
   const [followersCount, setFollowersCount] = useState(followers);
@@ -45,7 +45,7 @@ const UserListItem = (user) => {
       <LogoImg src={logo} alt="logo" />
       <UserLine></UserLine>
       <WrapperUserAvatar>
-        <UserAvatar src={avatar} alt={user} />
+        <UserAvatar src={avatar} alt={name} />
       </WrapperUserAvatar>
       <UserTweets>{tweets} tweets</UserTweets>
       <UserFollowers>

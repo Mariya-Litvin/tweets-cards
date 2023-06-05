@@ -5,9 +5,9 @@ const Select = ({ handleChange }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const options = [
-    { value: "All", label: "All" },
-    { value: "Follow", label: "Follow" },
-    { value: "Followings", label: "Followings" },
+    { value: "", label: "All" },
+    { value: "false", label: "Follow" },
+    { value: "true", label: "Followings" },
   ];
 
   const handleChangeSelect = (event) => {
