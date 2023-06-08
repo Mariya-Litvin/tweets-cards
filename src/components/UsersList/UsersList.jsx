@@ -5,7 +5,7 @@ import {
   WrapperButtons,
 } from "./UsersList.styled";
 import { useEffect, useState } from "react";
-import { getSelect, getUsers } from "../../api/Api";
+import { getUsers } from "../../api/Api";
 import { ButtonLoadMore } from "../ButtonLoadMore/ButtonLoadMore";
 import UserListItem from "../UserListItem/UserListItem";
 import { Loader } from "../Loader/Loader";
@@ -21,24 +21,33 @@ const UsersList = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
-  const [selectValue, setSelectValue] = useState("");
+  // const [selectValue, setSelectValue] = useState("");
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getAll() {
-      const response = await getSelect(selectValue);
-      console.log(response);
-      setUsers(response);
-      setShowLoadMoreBtn(false);
-    }
-    getAll();
-  }, [selectValue, showLoadMoreBtn]);
-
   const handleChange = (value) => {
-    const valueSelect = value;
-    setSelectValue(valueSelect);
-    console.log(valueSelect);
+    // console.log(value);
+    if (value === "all") {
+      const findUsers = users;
+      // console.log(findUsers);
+      setUsers(findUsers);
+    }
+    if (value === "false") {
+      const findUsers = users.filter((user) => user.check === false);
+      // console.log(findUsers);
+      if (findUsers.length < 3) {
+        setShowLoadMoreBtn(false);
+      }
+      setUsers(findUsers);
+    }
+    if (value === "true") {
+      const findUsers = users.filter((user) => user.check === true);
+      // console.log(findUsers);
+      if (findUsers.length < 3) {
+        setShowLoadMoreBtn(false);
+      }
+      setUsers(findUsers);
+    }
   };
 
   useEffect(() => {
