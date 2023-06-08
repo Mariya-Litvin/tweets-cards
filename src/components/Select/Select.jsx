@@ -5,7 +5,7 @@ const Select = ({ handleChange }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const options = [
-    { value: "", label: "All" },
+    { value: "all", label: "Show All" },
     { value: "false", label: "Follow" },
     { value: "true", label: "Followings" },
   ];
@@ -28,10 +28,13 @@ const Select = ({ handleChange }) => {
           fontSize: "16px",
           borderRadius: "4px",
           border: "none",
-          width: "120px",
+          width: "130px",
           fontWeight: "500",
         }}
       >
+        <option value="" disabled>
+          Select value...
+        </option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

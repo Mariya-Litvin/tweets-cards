@@ -11,7 +11,7 @@ export const updateUsersData = async (id, { check, followers }) => {
   return response.data;
 };
 
-export const getSelect = async (check) => {
-  const response = await axios.get(`users`, { params: { check } });
-  return response.data;
-};
+// export const getSelect = async (check) => {
+//   const response = await axios.get(`users`, { params: { check } });
+//   return response.data;
+// };
