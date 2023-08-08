@@ -2,15 +2,11 @@ import styled from "styled-components";
 
 export const LogoGoIt = styled.img`
   position: absolute;
-  width: 76px;
-  height: 22px;
   left: 20px;
   top: 20px;
 `;
 
 export const LogoImg = styled.img`
-  width: 308px;
-  height: 168px;
   margin: 28px auto 18px auto;
 `;
 

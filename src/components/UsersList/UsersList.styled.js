@@ -2,7 +2,12 @@ import styled from "styled-components";
 
 export const WrapperButtons = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 100px;
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 1280px) {
+    gap: 1000px;
+  }
 `;
 
 export const ButtonBack = styled.div`
@@ -13,7 +18,7 @@ export const ButtonBack = styled.div`
   width: 100px;
   height: 30px;
   padding: 5px;
-  margin-bottom: 10px;
+
   font-weight: 500;
   font-size: 18px;
   color: #fff;
@@ -33,6 +38,8 @@ export const ButtonBack = styled.div`
 export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   gap: 30px;
   list-style: none;

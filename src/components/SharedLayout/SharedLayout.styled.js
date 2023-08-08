@@ -1,8 +1,18 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const Section = styled.section`
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Header = styled.header`
-  width: 480px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,9 +24,6 @@ export const Header = styled.header`
   > nav {
     display: flex;
     gap: 20px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 100%;
   }
 `;
 

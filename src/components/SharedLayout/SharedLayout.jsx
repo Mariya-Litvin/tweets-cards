@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
-import { Header, LinkActive } from "./SharedLayout.styled";
+import { Header, LinkActive, Section } from "./SharedLayout.styled";
 import { Toaster } from "react-hot-toast";
 
 const SharedLayout = () => {
@@ -15,12 +15,16 @@ const SharedLayout = () => {
       </Header>
       <Suspense
         fallback={
-          <div>
+          <div style={{ display: "flex", margin: "0 auto" }}>
             <Loader />
           </div>
         }
       >
-        <Outlet />
+        <main>
+          <Section>
+            <Outlet />
+          </Section>
+        </main>
       </Suspense>
       <Toaster position="top-center" reverseOrder={false} />
     </>

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { SelectButton } from "./Select.styled";
 
 const Select = ({ handleChange }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const options = [
-    { value: "all", label: "Show All" },
+    { value: "", label: "Show All" },
     { value: "false", label: "Follow" },
     { value: "true", label: "Followings" },
   ];
@@ -17,31 +18,13 @@ const Select = ({ handleChange }) => {
   };
 
   return (
-    <div>
-      <select
-        value={selectedValue}
-        onChange={handleChangeSelect}
-        style={{
-          backgroundColor: "#3b83bd",
-          color: "#fff",
-          padding: "4px",
-          fontSize: "16px",
-          borderRadius: "4px",
-          border: "none",
-          width: "130px",
-          fontWeight: "500",
-        }}
-      >
-        <option value="" disabled>
-          Select value...
+    <SelectButton value={selectedValue} onChange={handleChangeSelect}>
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
         </option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </div>
+      ))}
+    </SelectButton>
   );
 };
 

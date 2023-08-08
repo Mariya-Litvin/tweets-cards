@@ -18,36 +18,17 @@ import { useNavigate } from "react-router-dom";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
-  const [page, setPage] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(true);
-  // const [selectValue, setSelectValue] = useState("");
+  const [checkValue, setCheckValue] = useState("");
+  const limit = 3;
 
   const navigate = useNavigate();
 
   const handleChange = (value) => {
-    // console.log(value);
-    if (value === "all") {
-      const findUsers = users;
-      // console.log(findUsers);
-      setUsers(findUsers);
-    }
-    if (value === "false") {
-      const findUsers = users.filter((user) => user.check === false);
-      // console.log(findUsers);
-      if (findUsers.length < 3) {
-        setShowLoadMoreBtn(false);
-      }
-      setUsers(findUsers);
-    }
-    if (value === "true") {
-      const findUsers = users.filter((user) => user.check === true);
-      // console.log(findUsers);
-      if (findUsers.length < 3) {
-        setShowLoadMoreBtn(false);
-      }
-      setUsers(findUsers);
-    }
+    setCheckValue(value);
+    setPageNumber(1);
   };
 
   useEffect(() => {
@@ -55,18 +36,27 @@ const UsersList = () => {
       try {
         setIsLoading(true);
         setShowLoadMoreBtn(false);
-        const response = await getUsers(page);
-        setShowLoadMoreBtn(true);
 
-        if (page === 1) {
+        const response = await getUsers({
+          page: pageNumber,
+          check: checkValue,
+        });
+
+        if (pageNumber === 1) {
+          setIsLoading(false);
+          setShowLoadMoreBtn(true);
           setUsers(response);
-          setIsLoading(false);
-        } else {
-          setUsers((prev) => [...prev, ...response]);
-          setIsLoading(false);
         }
-        if (response.length < 3) {
+
+        if (pageNumber > 1) {
+          setIsLoading(false);
+          setShowLoadMoreBtn(true);
+          setUsers((prev) => [...prev, ...response]);
+        }
+
+        if (response.length < limit) {
           setShowLoadMoreBtn(false);
+          setIsLoading(false);
           toast.success(`Tweets Cards are over`);
         }
       } catch (error) {
@@ -75,10 +65,10 @@ const UsersList = () => {
       }
     }
     getAllUsers();
-  }, [page]);
+  }, [pageNumber, checkValue]);
 
-  const loadMoreCards = () => {
-    setPage((prev) => prev + 1);
+  const handleLoadMoreCards = () => {
+    setPageNumber((prev) => prev + 1);
     setIsLoading(true);
   };
 
@@ -92,13 +82,16 @@ const UsersList = () => {
         <Select handleChange={handleChange} />
       </WrapperButtons>
       <UserList>
-        {users.map((user) => (
-          <UserCard key={user.id}>
-            <UserListItem user={user} />
-          </UserCard>
-        ))}
+        {users.length > 0 &&
+          users.map((user) => (
+            <UserCard key={user.id}>
+              <UserListItem user={user} />
+            </UserCard>
+          ))}
       </UserList>
-      {showLoadMoreBtn && <ButtonLoadMore onClickButton={loadMoreCards} />}
+      {showLoadMoreBtn && (
+        <ButtonLoadMore onClickButton={handleLoadMoreCards} />
+      )}
       {isLoading && <Loader />}
       <ScrollToTop
         showUnder={160}

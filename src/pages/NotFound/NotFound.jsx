@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
-import { NotFoundText, Section } from "./NotFound.styled";
+import { NotFoundText } from "./NotFound.styled";
 
 const NotFound = () => {
   return (
-    <main>
-      <Section>
-        <NotFoundText>
-          Not found this page. Go to
-          <Link to="/"> Home</Link>
-        </NotFoundText>
-      </Section>
-    </main>
+    <>
+      <NotFoundText>
+        Not found this page. Go to
+        <Link to="/"> Home</Link>
+      </NotFoundText>
+    </>
   );
 };
 

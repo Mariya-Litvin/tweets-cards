@@ -41,8 +41,8 @@ const UserListItem = (user) => {
 
   return (
     <>
-      <LogoGoIt src={logoGoIt} alt="logoGoIt" />
-      <LogoImg src={logo} alt="logo" />
+      <LogoGoIt src={logoGoIt} width="76px" height="22px" alt="logoGoIt" />
+      <LogoImg src={logo} width="308px" height="168px" alt="logo" />
       <UserLine></UserLine>
       <WrapperUserAvatar>
         <UserAvatar src={avatar} alt={name} />
