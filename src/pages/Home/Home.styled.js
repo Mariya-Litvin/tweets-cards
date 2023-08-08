@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const HomeImg = styled.img`
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 10px;
-  width: 350px;
-  height: 200px;
-  @media screen and (min-width: 768px) {
-    width: 450px;
-    height: 300px;
-  }
 `;
 
 export const HomeText = styled.p`

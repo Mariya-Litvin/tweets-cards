@@ -3,7 +3,7 @@ import logo from "../../images/logo.png";
 const Home = () => {
   return (
     <>
-      <HomeImg src={logo} alt="logo" />
+      <HomeImg width="350px" height="200px" src={logo} alt="logo" />
       <HomeText>Welcome to the Tweets Cards App!</HomeText>
     </>
   );
