@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Section = styled.section`
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   padding: 0px 15px;
   display: flex;
   flex-direction: column;
